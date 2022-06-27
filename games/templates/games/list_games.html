@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="games-container">
+        {% for game in game_list %}
+            <div class="single-game-container">
+                <li class="games">
+                    <i class="fa-solid fa-dragon"></i><a href="{% url 'show_game' game.id %}">{{ game.name }}</a>
+                </li>
+                {% if game.user == user %}
+                    <span class="button"><a href="{% url 'delete_game' game.id %}">Delete Game</a></span>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+{% endblock content %}
+    
